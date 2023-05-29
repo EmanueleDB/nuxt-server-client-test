@@ -1,42 +1,31 @@
-@import "_fonts.scss";
+@import "_mixins.scss";
+@import "_grid.scss";
 
-//Fonts
-@mixin font-montserrat {
-  font-family: Montserrat, sans-serif;
-}
-
-//Bold
-@mixin font-montserrat-bold {
-  @include font-montserrat;
-  font-weight: 700;
-}
-//SemiBold
-@mixin font-montserrat-semiBold {
-  @include font-montserrat;
-  font-weight: 600;
-}
-//Medium
-@mixin font-montserrat-medium {
-  @include font-montserrat;
-  font-weight: 500;
-}
-//Medium Italic
-@mixin font-montserrat-mediumItalic {
-  @include font-montserrat;
-  font-style: italic;
-  font-weight: 500;
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+  background-color: aquamarine !important;
 }
 
-@mixin font-openSans {
-  font-family: OpenSans, sans-serif;
-}
+body {
+  font-family: Montserrat, OpenSans !important;
+  background-color: var(--background);
+  font-size: 12px;
+  @include respond-to("md") {
+    font-size: 18px;
+  }
 
-//Regular
-@mixin font-openSans-regular {
-  @include font-openSans;
-  font-weight: 400;
-} //SemiBold
-@mixin font-openSans-semiBold {
-  @include font-openSans;
-  font-weight: 600;
-} //Medium
+  h1 {
+    margin: 0;
+  }
+
+  li {
+    list-style-type: none;
+  }
+
+  p {
+    margin: 0;
+  }
+}
