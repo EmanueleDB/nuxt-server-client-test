@@ -6,11 +6,10 @@ html, body {
   padding: 0;
   height: 100%;
   overflow-x: hidden;
-  background-color: aquamarine !important;
 }
 
 body {
-  font-family: Montserrat, OpenSans !important;
+  font-family: Montserrat, OpenSans, sans-serif;
   background-color: var(--background);
   font-size: 12px;
   @include respond-to("md") {
