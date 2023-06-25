@@ -1,6 +1,8 @@
 import mongoose from 'mongoose'
 const config = useRuntimeConfig()
 
+mongoose.Promise = global.Promise
+
 export default async () => {
   try {
     await mongoose.connect(config.MONGO_URL)

@@ -50,9 +50,9 @@
 
 <script setup lang="ts">
 import axios from 'axios'
+import { ref, onMounted } from 'vue'
 import AddUserModal from '~/components/AddUserModal.vue'
 import unbind from '~/utils/unbind'
-import { ref, onMounted } from 'vue'
 
 const users = ref([])
 const fields = ['firstName', 'lastName', 'email', 'age', 'hasPets']
@@ -61,7 +61,7 @@ const id = ref({})
 
 const fetchUsers = async () => {
   try {
-    const response = await axios.get('http://localhost:3000/users')
+    const response = await axios.get(window.location.origin + '/usersList')
     if (response) users.value = response.data
   } catch (e) {
     console.log(e)

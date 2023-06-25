@@ -1,5 +1,5 @@
 import User from '~/server/schemas/user'
-import { IUser } from '~/server/api/user/types'
+import { IUser } from '~/server/api/usersList/types'
 
 export default defineEventHandler(async (event) => {
   const users: IUser[] = await User.find({}).select(
