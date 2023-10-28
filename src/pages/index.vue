@@ -4,29 +4,22 @@
       <h1>List of users</h1>
     </div>
     <div class="col-12 mb-2">
-      <b-btn
-        v-b-modal.addUserModal
-        class="float-right"
-        variant="primary"
-        @click="addUser"
-        >Add user</b-btn
+      <BButton class="float-right" variant="primary" @click="addUser"
+        >Add user</BButton
       >
     </div>
     <div class="col-12">
       <b-table striped hover :items="users" :fields="fields" class="text-center"
         ><template #cell(actions)="{ item }">
           <span>
-            <font-awesome-icon
-              v-b-tooltip.hover.top="'Delete'"
+            <FontAwesomeIcon
               class="delete"
               icon="fa-trash-can"
               @click="deleteUser(item)"
             />
           </span>
           <span>
-            <font-awesome-icon
-              v-b-modal.addUserModal
-              v-b-tooltip.hover.top="'Edit'"
+            <FontAwesomeIcon
               class="ml-2 edit"
               icon="fa-edit"
               @click="editUser(item)"
@@ -34,16 +27,16 @@
           </span>
         </template>
         <template #cell(hasPets)="{ item }">
-          <font-awesome-icon v-if="item.hasPets" icon="fa-solid fa-check" />
-          <font-awesome-icon v-else icon="fa-regular fa-circle-xmark" />
+          <FontAwesomeIcon v-if="item.hasPets" icon="fa-solid fa-check" />
+          <FontAwesomeIcon v-else icon="fa-regular fa-circle-xmark" />
         </template>
       </b-table>
     </div>
     <AddUserModal
-      v-if="showModal"
+      :id="id"
+      :model-value="showModal"
       @close="showModal = false"
       @save="saveUser"
-      :id="id"
     />
   </div>
 </template>
@@ -61,7 +54,7 @@ const id = ref({})
 
 const fetchUsers = async () => {
   try {
-    const response = await axios.get(window.location.origin + '/usersList')
+    const response = await axios.get('/api/users')
     if (response) users.value = response.data
   } catch (e) {
     console.log(e)
@@ -70,9 +63,7 @@ const fetchUsers = async () => {
 
 const deleteUser = async (user) => {
   try {
-    const response = await axios.delete(
-      `http://localhost:3000/user?email=${user.email}`
-    )
+    const response = await axios.delete(`/api/user?email=${user.email}`)
     if (response) await fetchUsers()
   } catch (e) {
     console.log(e)
@@ -80,20 +71,20 @@ const deleteUser = async (user) => {
 }
 
 const addUser = () => {
-  id.value = {}
   showModal.value = true
+  id.value = {}
 }
 
 const editUser = (user) => {
-  id.value = unbind(user)
   showModal.value = true
+  id.value = unbind(user)
 }
 
 const saveUser = async (user) => {
   try {
     const response = await axios({
-      url: 'http://localhost:3000/user',
-      method: Object.keys(id.value).length > 0 ? 'PATCH' : 'POST',
+      url: '/api/user',
+      method: 'POST',
       data: user,
     })
     if (response) await fetchUsers()

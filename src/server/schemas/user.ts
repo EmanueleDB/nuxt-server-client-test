@@ -1,7 +1,7 @@
-import mongoose from 'mongoose'
-import { IUser } from '~/server/api/usersList/types'
+import { Schema, model } from 'mongoose'
+import type { IUser } from '~/server/api/users/types'
 
-const user = new mongoose.Schema<IUser>(
+const user = new Schema<IUser>(
   {
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
@@ -10,8 +10,7 @@ const user = new mongoose.Schema<IUser>(
     hasPets: { type: Boolean, required: true },
     date: { type: Date, default: Date.now },
   },
-  { timestamps: true },
-  { collection: 'authentication' }
+  { collection: 'users' },
 )
 
-export default mongoose.model?.User || mongoose.model('authentication', user)
+export default model<IUser>('User', user)
