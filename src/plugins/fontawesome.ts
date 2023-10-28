@@ -1,7 +1,11 @@
 import { library, config } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faCheck, faTrashCan, faEdit } from '@fortawesome/free-solid-svg-icons'
-import { faCircleXmark } from '@fortawesome/free-regular-svg-icons'
+import {
+  faCheck,
+  faTrashCan,
+  faEdit,
+  faCircleXmark,
+} from '@fortawesome/free-solid-svg-icons'
 
 library.add(faCheck, faTrashCan, faEdit, faCircleXmark)
 

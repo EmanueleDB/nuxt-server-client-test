@@ -15,7 +15,7 @@
               </h3>
               <FontAwesomeIcon
                 class="fa-lg cancel"
-                icon="fa-regular fa-circle-xmark"
+                icon="fa-solid fa-circle-xmark"
                 @click="closeModal"
               />
             </div>

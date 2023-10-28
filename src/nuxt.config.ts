@@ -13,4 +13,7 @@ export default defineNuxtConfig({
     MONGO_PASSWORD: process.env.MONGO_PASSWORD,
     MONGO_URL: process.env.MONGO_URL,
   },
+  build: {
+    transpile: ['@fortawesome/vue-fontawesome'],
+  },
 })

@@ -28,7 +28,7 @@
         </template>
         <template #cell(hasPets)="{ item }">
           <FontAwesomeIcon v-if="item.hasPets" icon="fa-solid fa-check" />
-          <FontAwesomeIcon v-else icon="fa-regular fa-circle-xmark" />
+          <FontAwesomeIcon v-else icon="fa-solid fa-circle-xmark" />
         </template>
       </b-table>
     </div>
