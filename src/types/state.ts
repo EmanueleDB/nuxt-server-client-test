@@ -1,3 +1,3 @@
 export default interface State {
-    testState: object
+  testState: object
 }
